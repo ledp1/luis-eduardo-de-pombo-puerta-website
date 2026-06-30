@@ -2,7 +2,7 @@
 
 Personal portfolio built with React + Vite, populated from [@luisdepombo](https://x.com/luisdepombo) profile data.
 
-**Live:** [luis-eduardo-de-pombo-puerta.vercel.app](https://luis-eduardo-de-pombo-puerta.vercel.app)
+**Live:** [luisdepombo.vercel.app](https://luisdepombo.vercel.app)
 
 ## Development
 
