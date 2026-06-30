@@ -34,7 +34,7 @@ export const experience = [
     companyUrl: 'https://psychnow.co',
     period: 'Present',
     description:
-      'Co-building PsychNow — a mental health platform focused on accessible, technology-driven care.',
+      'Building PsychNow — a mental health platform focused on accessible, technology-driven care.',
     skills: ['Product', 'AI', 'Healthcare', 'Startup'],
   },
   {
@@ -44,7 +44,7 @@ export const experience = [
     companyUrl: 'https://sobercount.com',
     period: 'Present',
     description:
-      'Co-founding SoberCount — a recovery and sobriety tracking platform helping people stay accountable.',
+      'Founding SoberCount — a recovery and sobriety tracking platform helping people stay accountable.',
     skills: ['Product', 'Mobile', 'Health Tech', 'Startup'],
   },
   {
