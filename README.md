@@ -1,4 +1,4 @@
-# Luis De Pombo — Personal Website
+# personal-website
 
 Personal portfolio built with React + Vite, populated from [@luisdepombo](https://x.com/luisdepombo) profile data.
 

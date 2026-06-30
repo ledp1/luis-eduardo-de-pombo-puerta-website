@@ -30,7 +30,7 @@ jobs:
           fi
 
           OLD_DOMAIN="luis-eduardo-de-pombo-puerta.vercel.app"
-          PROJECT="${VERCEL_PROJECT_ID:-luis-eduardo-de-pombo-puerta-website}"
+          PROJECT="${VERCEL_PROJECT_ID:-luisdepombo}"
           TEAM_QUERY=""
           if [ -n "${VERCEL_ORG_ID:-}" ]; then
             TEAM_QUERY="?teamId=${VERCEL_ORG_ID}"
@@ -73,7 +73,7 @@ jobs:
             exit 0
           fi
 
-          PROJECT="${VERCEL_PROJECT_ID:-luis-eduardo-de-pombo-puerta-website}"
+          PROJECT="${VERCEL_PROJECT_ID:-luisdepombo}"
           TEAM_QUERY=""
           if [ -n "${VERCEL_ORG_ID:-}" ]; then
             TEAM_QUERY="?teamId=${VERCEL_ORG_ID}"

@@ -25,7 +25,7 @@ jobs:
       - name: Build for GitHub Pages
         working-directory: website
         env:
-          BASE_PATH: /luis-eduardo-de-pombo-puerta-website/
+          BASE_PATH: /personal-website/
         run: |
           npm ci
           npm run build
