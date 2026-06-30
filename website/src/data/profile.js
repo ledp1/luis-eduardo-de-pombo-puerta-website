@@ -4,7 +4,7 @@ export const profile = {
   title: 'Builder · Engineer · Founder',
   tagline:
     'Building AI products at the intersection of civil engineering, space research, and human-centered technology.',
-  bio: 'Builder/Founder at PsychNow & SoberCount. Engineer at NASA OSDR Analysis Working Group. Previously RLHF at Scale AI and tech governance at Colombia\'s Ministry of Transport. BSc & MSc in Civil Engineering from the University of Illinois Urbana-Champaign.',
+  bio: 'Builder/Founder at PsychNow & SoberCount. Data Standards Lead at NASA OSDR Hardware Analysis Working Group. Previously RLHF at Scale AI and tech governance at Colombia\'s Ministry of Transport. BSc & MSc in Civil Engineering from the University of Illinois Urbana-Champaign.',
   location: 'Cartagena, Colombia',
   email: 'depombo2@gmail.com',
   avatar: '/assets/photo-of-Luis.jpeg',
@@ -49,13 +49,13 @@ export const experience = [
   },
   {
     id: 3,
-    role: 'Engineer',
-    company: 'NASA OSDR Analysis Working Group',
+    role: 'Data Standards Lead',
+    company: 'NASA OSDR Hardware Analysis Working Group',
     companyUrl: 'https://awg.osdr.space',
     period: 'Present',
     description:
-      'Contributing structural integrity models for ISS centrifuges and lunar rover wheels. Direct contributor to the NASA OSDR SPLASH database and Hardware AWG adopt-an-instrument initiative.',
-    skills: ['Space Research', 'Structural Engineering', 'Python', 'SymPy'],
+      'Leading SPLASH metadata standardization — defining schemas, controlled vocabularies, and governance to make NASA\'s Space Physical and Life-sciences Archive of Scientific Hardware interoperable and AI-ready. Driving AI accessibility of SPLASH and contributing to the Adopt-an-Instrument initiative for lunar rover wheels and ISS centrifuges.',
+    skills: ['Space Research', 'Data Standardization', 'Metadata', 'Python'],
   },
   {
     id: 4,
@@ -130,11 +130,11 @@ export const projects = [
   },
   {
     id: 3,
-    title: 'AWG Hardware Models',
+    title: 'SPLASH Data Standardization',
     description:
-      'Structural integrity models (SymPy) for active ISS centrifuges and lunar rover wheels. Direct contribution to NASA OSDR SPLASH database.',
-    tags: ['NASA', 'Space', 'SymPy'],
-    link: 'https://github.com/ledp1/awg-hardware-models',
+      'Metadata schema and controlled vocabularies for NASA OSDR\'s SPLASH hardware database — reverse-engineered from live data to ensure interoperability and AI-readiness.',
+    tags: ['NASA', 'SPLASH', 'Open Science'],
+    link: 'https://awg.osdr.space/t/splash-data-standardization/4117',
     featured: true,
   },
   {
