@@ -1,0 +1,84 @@
+name: Remove Old Vercel Alias
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/remove-old-vercel-alias.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  remove-old-alias:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Remove old vercel.app domain from project
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "${VERCEL_TOKEN:-}" ]; then
+            echo "VERCEL_TOKEN not configured — skipping API removal"
+            exit 0
+          fi
+
+          OLD_DOMAIN="luis-eduardo-de-pombo-puerta.vercel.app"
+          PROJECT="${VERCEL_PROJECT_ID:-luis-eduardo-de-pombo-puerta-website}"
+          TEAM_QUERY=""
+          if [ -n "${VERCEL_ORG_ID:-}" ]; then
+            TEAM_QUERY="?teamId=${VERCEL_ORG_ID}"
+          fi
+
+          echo "Removing ${OLD_DOMAIN} from project ${PROJECT}..."
+          HTTP_CODE=$(curl -sS -o /tmp/vercel-delete-response.json -w "%{http_code}" \
+            -X DELETE \
+            "https://api.vercel.com/v9/projects/${PROJECT}/domains/${OLD_DOMAIN}${TEAM_QUERY}" \
+            -H "Authorization: Bearer ${VERCEL_TOKEN}")
+
+          echo "Response (${HTTP_CODE}):"
+          cat /tmp/vercel-delete-response.json
+          echo
+
+          if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "204" ] || [ "$HTTP_CODE" = "404" ]; then
+            echo "Old domain removed or already absent."
+          else
+            echo "Unexpected status removing domain"
+            exit 1
+          fi
+
+          echo "Ensuring project is named luisdepombo..."
+          HTTP_CODE=$(curl -sS -o /tmp/vercel-rename-response.json -w "%{http_code}" \
+            -X PATCH \
+            "https://api.vercel.com/v9/projects/${PROJECT}${TEAM_QUERY}" \
+            -H "Authorization: Bearer ${VERCEL_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -d '{"name":"luisdepombo"}')
+
+          echo "Rename response (${HTTP_CODE}):"
+          cat /tmp/vercel-rename-response.json
+          echo
+
+      - name: Verify domains
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: |
+          if [ -z "${VERCEL_TOKEN:-}" ]; then
+            exit 0
+          fi
+
+          PROJECT="${VERCEL_PROJECT_ID:-luis-eduardo-de-pombo-puerta-website}"
+          TEAM_QUERY=""
+          if [ -n "${VERCEL_ORG_ID:-}" ]; then
+            TEAM_QUERY="?teamId=${VERCEL_ORG_ID}"
+          fi
+
+          curl -sS \
+            "https://api.vercel.com/v9/projects/${PROJECT}/domains${TEAM_QUERY}" \
+            -H "Authorization: Bearer ${VERCEL_TOKEN}" | python3 -m json.tool
