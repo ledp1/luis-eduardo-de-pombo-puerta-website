@@ -54,7 +54,7 @@ export const experience = [
     companyUrl: 'https://awg.osdr.space',
     period: 'Present',
     description:
-      'Leading SPLASH metadata standardization — defining schemas, controlled vocabularies, and governance to make NASA\'s Space Physical and Life-sciences Archive of Scientific Hardware interoperable and AI-ready. Driving AI accessibility of SPLASH and contributing to the Adopt-an-Instrument initiative for lunar rover wheels and ISS centrifuges.',
+      'Leading SPLASH metadata standardization — defining schemas, controlled vocabularies, and governance to make NASA\'s Space Physical and Life-sciences Archive of Scientific Hardware interoperable and AI-ready.',
     skills: ['Space Research', 'Data Standardization', 'Metadata', 'Python'],
   },
   {
