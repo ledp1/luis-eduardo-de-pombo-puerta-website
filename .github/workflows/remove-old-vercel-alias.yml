@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - '.github/workflows/remove-old-vercel-alias.yml'
+      - 'website/vercel.json'
 
 permissions:
   contents: read
@@ -13,6 +14,7 @@ permissions:
 jobs:
   remove-old-alias:
     runs-on: ubuntu-latest
+    environment: Production
     steps:
       - name: Remove old vercel.app domain from project
         env:
@@ -23,7 +25,7 @@ jobs:
           set -euo pipefail
 
           if [ -z "${VERCEL_TOKEN:-}" ]; then
-            echo "VERCEL_TOKEN not configured — skipping API removal"
+            echo "VERCEL_TOKEN not configured in Production environment — skipping API removal"
             exit 0
           fi
 
@@ -40,13 +42,11 @@ jobs:
             "https://api.vercel.com/v9/projects/${PROJECT}/domains/${OLD_DOMAIN}${TEAM_QUERY}" \
             -H "Authorization: Bearer ${VERCEL_TOKEN}")
 
-          echo "Response (${HTTP_CODE}):"
+          echo "Delete response (${HTTP_CODE}):"
           cat /tmp/vercel-delete-response.json
           echo
 
-          if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "204" ] || [ "$HTTP_CODE" = "404" ]; then
-            echo "Old domain removed or already absent."
-          else
+          if [ "$HTTP_CODE" != "200" ] && [ "$HTTP_CODE" != "204" ] && [ "$HTTP_CODE" != "404" ]; then
             echo "Unexpected status removing domain"
             exit 1
           fi
