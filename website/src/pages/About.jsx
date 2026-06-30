@@ -1,72 +1,116 @@
+import { ExternalLink } from 'lucide-react';
+import { profile, education, skills, interests } from '../data/profile';
+
 const About = () => {
   return (
     <div className="min-h-screen pt-16 bg-white dark:bg-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="max-w-3xl mx-auto">
-          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-8">About Me</h1>
-          
-          <div className="prose dark:prose-invert max-w-none">
-            <p className="text-lg text-gray-600 dark:text-gray-300 mb-6">
-              I am a passionate AI Engineer with a strong background in machine learning and software development.
-              My journey in technology began with a fascination for artificial intelligence and its potential
-              to transform industries and improve lives.
-            </p>
-            
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">Education</h2>
-            <div className="space-y-6">
-              <div className="border-l-4 border-blue-500 pl-4">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Master of Science in Civil Engineering</h3>
-                <p className="text-gray-600 dark:text-gray-300">University of Illinois at Urbana-Champaign</p>
-                <p className="text-gray-600 dark:text-gray-300 mt-2">
-                  Specialized in construction management and technology.
-                </p>
-              </div>
-              
-              <div className="border-l-4 border-blue-500 pl-4">
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Bachelor of Science in Civil Engineering</h3>
-                <p className="text-gray-600 dark:text-gray-300">University of Illinois at Urbana-Champaign</p>
-                <p className="text-gray-600 dark:text-gray-300 mt-2">
-                  Focused on core engineering principles and sustainable design. Graduated with honors.
-                </p>
-              </div>
-            </div>
-            
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">Skills</h2>
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-              {[
-                'Machine Learning',
-                'Deep Learning',
-                'Natural Language Processing',
-                'Python',
-                'TensorFlow',
-                'PyTorch',
-                'React',
-                'Node.js',
-                'AWS',
-                'Docker',
-                'Git',
-                'SQL'
-              ].map((skill) => (
-                <div
-                  key={skill}
-                  className="bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-200 px-4 py-2 rounded-lg text-center"
-                >
-                  {skill}
-                </div>
-              ))}
-            </div>
-            
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mt-8 mb-4">Interests</h2>
-            <p className="text-gray-600 dark:text-gray-300">
-              When I'm not coding or working on AI projects, I enjoy hiking, reading science fiction, and playing chess. I'm also an avid photographer and love to capture landscapes and urban scenes.
-            </p>
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+        <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 mb-10">
+          <img
+            src={profile.avatar}
+            alt={profile.name}
+            className="w-24 h-24 rounded-full ring-4 ring-blue-100 dark:ring-blue-900 object-cover"
+          />
+          <div className="text-center sm:text-left">
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
+              {profile.name}
+            </h1>
+            <p className="text-lg text-blue-600 dark:text-blue-400 mt-1">{profile.title}</p>
+            <a
+              href={profile.social.x.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 text-gray-500 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 mt-2 text-sm"
+            >
+              @{profile.social.x.handle}
+              <ExternalLink className="w-3 h-3" />
+            </a>
+          </div>
+        </div>
 
-            <div className="mt-8">
-              <h2 className="text-xl font-semibold text-gray-900 dark:text-white">Connect With Me</h2>
-              <p className="mt-2 text-gray-600 dark:text-gray-300">
-                Feel free to check out my projects on <a href="https://github.com/luis-eduardo-de-pombo-puerta" className="text-blue-600 hover:underline dark:text-blue-400">GitHub</a> or reach out via <a href="mailto:depombo2@gmail.com" className="text-blue-600 hover:underline dark:text-blue-400">email</a>.
-              </p>
-            </div>
+        <div className="prose dark:prose-invert max-w-none">
+          <p className="text-lg text-gray-600 dark:text-gray-300 leading-relaxed mb-8">
+            {profile.bio}
+          </p>
+
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Education</h2>
+          <div className="space-y-6 mb-10">
+            {education.map((edu) => (
+              <div
+                key={edu.degree}
+                className="border-l-4 border-blue-500 pl-5 py-1"
+              >
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+                  {edu.degree}
+                </h3>
+                <a
+                  href={edu.schoolUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-600 dark:text-blue-400 hover:underline"
+                >
+                  {edu.school}
+                </a>
+                <p className="text-gray-600 dark:text-gray-400 mt-1 text-sm">{edu.detail}</p>
+              </div>
+            ))}
+          </div>
+
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Skills</h2>
+          <div className="flex flex-wrap gap-2 mb-10">
+            {skills.map((skill) => (
+              <span
+                key={skill}
+                className="px-3 py-1.5 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 rounded-lg text-sm font-medium"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Interests</h2>
+          <ul className="space-y-2 mb-10">
+            {interests.map((interest) => (
+              <li
+                key={interest}
+                className="flex items-center gap-2 text-gray-600 dark:text-gray-300"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-500 flex-shrink-0" />
+                {interest}
+              </li>
+            ))}
+          </ul>
+
+          <div className="p-6 rounded-2xl bg-gray-50 dark:bg-gray-800/50 border border-gray-200 dark:border-gray-700">
+            <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">
+              Connect
+            </h2>
+            <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
+              Find me on{' '}
+              <a
+                href={profile.social.github.url}
+                className="text-blue-600 dark:text-blue-400 hover:underline"
+              >
+                GitHub
+              </a>
+              ,{' '}
+              <a
+                href={profile.social.x.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-600 dark:text-blue-400 hover:underline"
+              >
+                X (@{profile.social.x.handle})
+              </a>
+              , or{' '}
+              <a
+                href={`mailto:${profile.email}`}
+                className="text-blue-600 dark:text-blue-400 hover:underline"
+              >
+                email
+              </a>
+              .
+            </p>
           </div>
         </div>
       </div>

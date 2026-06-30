@@ -1,32 +1,26 @@
-# AI Engineer Portfolio
+# Luis De Pombo — Personal Website
 
-This is a dynamic portfolio website built with React to showcase your work as an AI Engineer.
+Personal portfolio built with React + Vite, populated from [@luisdepombo](https://x.com/luisdepombo) profile data.
 
-## Features
-- Home, About, Projects, Skills, Experience, and Contact sections
-- Responsive, modern design
-- Easy to update with your own content
+**Live:** [luis-eduardo-de-pombo-puerta.vercel.app](https://luis-eduardo-de-pombo-puerta.vercel.app)
 
-## Getting Started
+## Development
 
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-2. Start the development server:
-   ```bash
-   npm run dev
-   ```
-3. Build for production:
-   ```bash
-   npm run build
-   ```
-4. Deploy to GitHub Pages or Vercel/Netlify
+```bash
+cd website
+npm install
+npm run dev
+```
 
-## Customization
-- Update your content in the `src/data` folder.
-- Customize styles in the `src/styles` folder.
+## Build
 
----
+```bash
+cd website
+npm run build
+npm run preview
+```
 
-This site uses content from your previous static site and professional placeholders for projects, skills, and experience.
+## Deploy
+
+- **Vercel** — auto-deploys from `main` (root directory: `website`)
+- **GitHub Pages** — workflow deploys to `gh-pages` branch on push to `main`
