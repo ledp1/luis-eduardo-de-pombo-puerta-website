@@ -52,8 +52,8 @@ const Contact = () => {
             Contact
           </h1>
           <p className="text-gray-600 dark:text-gray-400">
-            Open to collaborations on AI, space research, and engineering projects. Reach out
-            through any of the channels below.
+            Looking for co-founders and VCs to build in AI, space research, and engineering.
+            Reach out through any of the channels below.
           </p>
         </div>
 
@@ -89,8 +89,8 @@ const Contact = () => {
         <div className="p-8 rounded-2xl bg-gradient-to-br from-blue-600 to-violet-600 text-white text-center">
           <h2 className="text-xl font-bold mb-2">Let's build something</h2>
           <p className="text-blue-100 mb-6 text-sm">
-            Whether it's AI agents, space hardware models, or health tech — I'd love to hear
-            from you.
+            I'm looking for co-founders and VCs to build in AI agents, space hardware, and
+            health tech — I'd love to hear from you.
           </p>
           <a
             href={`mailto:${profile.email}?subject=Hello%20from%20your%20website`}

@@ -20,8 +20,8 @@ export const profile = {
       url: 'https://github.com/ledp1',
     },
     linkedin: {
-      handle: 'luis-eduardo-de-pombo-puerta',
-      url: 'https://www.linkedin.com/in/luis-eduardo-de-pombo-puerta/',
+      handle: 'ledp1',
+      url: 'https://www.linkedin.com/in/ledp1/',
     },
   },
 };
